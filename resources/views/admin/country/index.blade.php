@@ -30,10 +30,10 @@
                         @endif
                       </td>
                       <td>
-                        <a href="{{route('category.edit', $cate->id)}}" class="btn btn-warning">Edit</a>
+                        <a href="{{route('country.edit', $cate->id)}}" class="btn btn-warning">Edit</a>
                         {!! Form::open([
                             'method'=>'DELETE', 
-                            'route'=>['category.destroy', $cate->id], 
+                            'route'=>['country.destroy', $cate->id], 
                             'onsubmit'=>'return confirm("Bạn có thật sự muốn xóa?")'
                         ]) !!}
                             {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}

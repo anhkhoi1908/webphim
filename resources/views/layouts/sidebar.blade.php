@@ -65,7 +65,7 @@
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#country"
                             aria-expanded="false" aria-controls="country">
-                            <i class="fa-regular fa-user pe-2"></i>
+                            <i class="fa-solid fa-earth-americas pe-2"></i>
                             Country
                         </a>
                         <ul id="country" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -73,14 +73,14 @@
                                 <a href="{{route('country.create')}}" class="sidebar-link">Create</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{route('country.create')}}" class="sidebar-link">Create</a>
+                                <a href="{{route('country.index')}}" class="sidebar-link">List</a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#movie"
                             aria-expanded="false" aria-controls="movie">
-                            <i class="fa-regular fa-user pe-2"></i>
+                            <i class="fa-solid fa-video pe-2"></i>
                             Movie
                         </a>
                         <ul id="movie" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -88,14 +88,14 @@
                                 <a href="{{route('movie.create')}}" class="sidebar-link">Create</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{route('movie.create')}}" class="sidebar-link">Create</a>
+                                <a href="{{route('movie.index')}}" class="sidebar-link">List</a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#episode"
                             aria-expanded="false" aria-controls="episode">
-                            <i class="fa-regular fa-user pe-2"></i>
+                            <i class="fa-solid fa-clapperboard pe-2"></i>
                             Episode
                         </a>
                         <ul id="episode" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -103,7 +103,7 @@
                                 <a href="{{route('episode.create')}}" class="sidebar-link">Create</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{route('episode.create')}}" class="sidebar-link">Create</a>
+                                <a href="{{route('episode.index')}}" class="sidebar-link">List</a>
                             </li>
                         </ul>
                     </li>
@@ -148,6 +148,7 @@
                 <div class="container-fluid">
                     <div class="mb-3">
                         <h3 style="color: #222">Bootstrap Sidebar Tutorial</h3>
+                        @yield('content')
                     </div>
                 </div>
             </main>

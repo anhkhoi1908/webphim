@@ -14,9 +14,9 @@ use App\Http\Controllers\EpisodeController;
 
 
 Route::get('/', [IndexController::class, 'home'])->name('homepage');
-Route::get('/danhmuc', [IndexController::class, 'category'])->name('category');
-Route::get('/theloai', [IndexController::class, 'genre'])->name('genre');
-Route::get('/quocgia', [IndexController::class, 'country'])->name('country');
+Route::get('/danhmuc/{slug}', [IndexController::class, 'category'])->name('category');
+Route::get('/theloai/{slug}', [IndexController::class, 'genre'])->name('genre');
+Route::get('/quocgia/{slug}', [IndexController::class, 'country'])->name('country');
 Route::get('/phim', [IndexController::class, 'movie'])->name('movie');
 Route::get('/xemphim', [IndexController::class, 'watch'])->name('watch');
 Route::get('/episode', [IndexController::class, 'episode'])->name('episode');
