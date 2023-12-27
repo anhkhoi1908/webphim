@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <table class="table">
+            <a href="{{route('category.create')}}" class="btn btn-primary">Add new</a>
+            <table id="tablecategory" class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <table class="table">
+            <table id="tablegenre" class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
