@@ -147,7 +147,7 @@
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="mb-3">
-                        <h3 style="color: #222">Bootstrap Sidebar Tutorial</h3>
+                        {{-- <h3 style="color: #222">Bootstrap Sidebar Tutorial</h3> --}}
                         @yield('content')
                     </div>
                 </div>

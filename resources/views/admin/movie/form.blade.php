@@ -48,10 +48,14 @@
                             {!! Form::select('country_id', $country, isset($movie) ? $movie->country_id: '', ['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
+                            {!! Form::label('Hot', 'Hot', []) !!}
+                            {!! Form::select('hot', ['1'=>'Có','0'=>'Không'], isset($movie) ? $movie->hot: '', ['class'=>'form-control']) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('Image', 'Image', []) !!}
                             {!! Form::file('image', ['class'=>'form-control-file']) !!}
 
-                            @if($movie)
+                            @if(!empty($movie))
                                 <img width="20%" src="{{asset('uploads/movie/'.$movie->image)}}" alt="">
                             @endif
                         </div>
