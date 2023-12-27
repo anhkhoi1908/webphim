@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <a href="{{route('category.create')}}" class="btn btn-primary my-5">Add new</a>
             <table id="tablecategory" class="table pt-5 mb-5">
                 <thead>
@@ -30,8 +30,8 @@
                             None
                         @endif
                       </td>
-                      <td>
-                        <a href="{{route('category.edit', $cate->id)}}" class="btn btn-warning">Edit</a>
+                      <td class="d-flex">
+                        <a href="{{route('category.edit', $cate->id)}}" class="btn btn-warning" style="margin-right: 0.5rem">Edit</a>
                         {!! Form::open([
                             'method'=>'DELETE', 
                             'route'=>['category.destroy', $cate->id], 

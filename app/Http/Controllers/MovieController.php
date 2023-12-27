@@ -15,7 +15,7 @@ class MovieController extends Controller
 {
     public function index()
     {
-        $list = Movie::all();
+        $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
         return view('admin.movie.index', compact('list'));
     }
 
@@ -33,6 +33,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = new Movie();
         $movie->title = $data['title'];
+        $movie->resolution = $data['resolution'];
         $movie->hot = $data['hot'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
@@ -72,6 +73,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = Movie::find($id);
         $movie->title = $data['title'];
+        $movie->resolution = $data['resolution'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->status = $data['status'];

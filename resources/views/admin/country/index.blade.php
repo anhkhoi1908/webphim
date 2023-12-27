@@ -3,8 +3,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <a href="{{route('category.create')}}" class="btn btn-primary my-5">Add new</a>
+        <div class="col-md-12">
+            <a href="{{route('country.create')}}" class="btn btn-primary my-5">Add new</a>
             <table id="tablecountry" class="table pt-5 mb-5">
                 <thead>
                   <tr>
@@ -30,8 +30,8 @@
                             None
                         @endif
                       </td>
-                      <td>
-                        <a href="{{route('country.edit', $cate->id)}}" class="btn btn-warning">Edit</a>
+                      <td class="d-flex">
+                        <a href="{{route('country.edit', $cate->id)}}" class="btn btn-warning" style="margin-right: 0.5rem">Edit</a>
                         {!! Form::open([
                             'method'=>'DELETE', 
                             'route'=>['country.destroy', $cate->id], 

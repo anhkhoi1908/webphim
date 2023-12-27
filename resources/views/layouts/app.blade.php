@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         @if(Auth::id())
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background: #5dc2a7 !important">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}

@@ -17,7 +17,7 @@ Route::get('/', [IndexController::class, 'home'])->name('homepage');
 Route::get('/danhmuc/{slug}', [IndexController::class, 'category'])->name('category');
 Route::get('/theloai/{slug}', [IndexController::class, 'genre'])->name('genre');
 Route::get('/quocgia/{slug}', [IndexController::class, 'country'])->name('country');
-Route::get('/phim', [IndexController::class, 'movie'])->name('movie');
+Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('movie');
 Route::get('/xemphim', [IndexController::class, 'watch'])->name('watch');
 Route::get('/episode', [IndexController::class, 'episode'])->name('episode');
 
