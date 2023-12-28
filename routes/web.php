@@ -10,8 +10,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\EpisodeController;
-
-
+use League\CommonMark\Extension\CommonMark\Node\Block\IndentedCode;
 
 Route::get('/', [IndexController::class, 'home'])->name('homepage');
 Route::get('/danhmuc/{slug}', [IndexController::class, 'category'])->name('category');
@@ -20,6 +19,9 @@ Route::get('/quocgia/{slug}', [IndexController::class, 'country'])->name('countr
 Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('movie');
 Route::get('/xemphim', [IndexController::class, 'watch'])->name('watch');
 Route::get('/episode', [IndexController::class, 'episode'])->name('episode');
+Route::get('/nam/{year}', [IndexController::class, 'year']);
+Route::get('/tag/{tag}', [IndexController::class, 'tag']);
+
 
 Auth::routes();
 
@@ -30,3 +32,5 @@ Route::resource('genre', GenreController::class);
 Route::resource('country', CountryController::class);
 Route::resource('movie', MovieController::class);
 Route::resource('episode', EpisodeController::class);
+Route::get('/update-year-movie', [MovieController::class, 'update_year']);
+

@@ -137,7 +137,7 @@
             </div>
         </aside>
         <!-- Main Component -->
-        <div class="main">
+        <div class="main" style="overflow-x: auto">
             <nav class="navbar navbar-expand px-3 border-bottom">
                 <!-- Button for sidebar toggle -->
                 <button class="btn" type="button" data-bs-theme="dark">

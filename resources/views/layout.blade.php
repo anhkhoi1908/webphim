@@ -116,6 +116,14 @@
                               @endforeach
                            </ul>
                         </li>
+                        <li class="mega dropdown">
+                           <a title="Năm Phim" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Năm Phim <span class="caret"></span></a>
+                           <ul role="menu" class=" dropdown-menu">
+                              @for($year=2000;$year<=2023;$year++)
+                                 <li><a title="{{$year}}" href="{{url('nam/'.$year)}}">{{$year}}</a></li>
+                              @endfor
+                           </ul>
+                        </li>
                      </ul>
                   </div>
                   <ul class="nav navbar-nav navbar-left" style="background:#000;">

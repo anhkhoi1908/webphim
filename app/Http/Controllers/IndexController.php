@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 class IndexController extends Controller
 {
     public function home() {
-        $hot = Movie::where('hot', 1)->where('status', 1)->get();
+        $hot = Movie::where('hot', 1)->where('status', 1)->orderBy('update_date', 'DESC')->get();
         $category = Category::orderBy('id', 'ASC')->where('status', 1)->get();
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
@@ -28,15 +28,31 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $cate_slug = Category::where('slug', $slug)->first();
-        $movie = Movie::where('category_id', $cate_slug->id)->paginate(1);
+        $movie = Movie::where('category_id', $cate_slug->id)->orderBy('update_date', 'DESC')->paginate(1);
         return view('pages.category', compact('category', 'genre', 'country', 'cate_slug', 'movie'));
+    }
+    public function year($year) {
+        $category = Category::orderBy('id', 'ASC')->where('status', 1)->get();
+        $genre = Genre::orderBy('id', 'DESC')->get();
+        $country = Country::orderBy('id', 'DESC')->get();
+        $year = $year;
+        $movie = Movie::where('year', $year)->orderBy('update_date', 'DESC')->paginate(1);
+        return view('pages.year', compact('category', 'genre', 'country', 'year', 'movie'));
+    }
+    public function tag($tag) {
+        $category = Category::orderBy('id', 'ASC')->where('status', 1)->get();
+        $genre = Genre::orderBy('id', 'DESC')->get();
+        $country = Country::orderBy('id', 'DESC')->get();
+        $tag = $tag;
+        $movie = Movie::where('tags', 'LIKE', '%'.$tag.'%')->orderBy('update_date', 'DESC')->paginate(1);
+        return view('pages.tag', compact('category', 'genre', 'country', 'tag', 'movie'));
     }
     public function country(Request $request, $slug) {
         $category = Category::orderBy('id', 'ASC')->where('status', 1)->get();
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $country_slug = Country::where('slug', $slug)->first();
-        $movie = Movie::where('country_id', $country_slug->id)->paginate(40);
+        $movie = Movie::where('country_id', $country_slug->id)->orderBy('update_date', 'DESC')->paginate(40);
         return view('pages.country', compact('category', 'genre', 'country', 'country_slug', 'movie'));
     }
     public function genre(Request $request, $slug) {
@@ -44,7 +60,7 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $genre_slug = Genre::where('slug', $slug)->first();
-        $movie = Movie::where('genre_id', $genre_slug->id)->paginate(40);
+        $movie = Movie::where('genre_id', $genre_slug->id)->orderBy('update_date', 'DESC')->paginate(40);
         return view('pages.genre', compact('category', 'genre', 'country', 'genre_slug', 'movie'));
     }
     public function movie(Request $request, $slug) {

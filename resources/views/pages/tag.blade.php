@@ -6,7 +6,7 @@
        <div class="panel-heading">
           <div class="row">
              <div class="col-xs-6">
-                <div class="yoast_breadcrumb hidden-xs"><span><span><a href="">{{$genre_slug->title}}</a> » <span class="breadcrumb_last" aria-current="page">2020</span></span></span></div>
+                <div class="yoast_breadcrumb hidden-xs"><span><span><a href="">Phim theo tags</a> » <span class="breadcrumb_last" aria-current="page">{{$tag}}</span></span></span></div>
              </div>
           </div>
        </div>
@@ -17,14 +17,14 @@
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
        <section>
           <div class="section-bar clearfix">
-             <h1 class="section-title"><span>{{$genre_slug->title}}</span></h1>
+             <h1 class="section-title"><span>Tag : {{$tag}}</span></h1>
           </div>
           <div class="halim_box">
             @foreach($movie as $key => $mov)
             <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-37606">
                <div class="halim-item">
                   <a class="halim-thumb" href="{{route('movie', $mov->slug)}}">
-                     <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$mov->image)}}" title="{{($mov->title)}}"></figure>
+                     <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$mov->image)}}" alt="{{($mov->title)}}" title="{{($mov->title)}}"></figure>
                      <span class="status">
                         @if($mov->resolution==0)
                             HD
@@ -57,7 +57,6 @@
                </div>
             </article>
             @endforeach
-          
           </div>
           <div class="clearfix"></div>
           <div class="text-center">{!! $movie->links("pagination::bootstrap-4") !!}</div>
@@ -193,8 +192,6 @@
                          </span>
                       </div>
                    </div>
-                  
-                  
                 </div>
              </div>
           </section>

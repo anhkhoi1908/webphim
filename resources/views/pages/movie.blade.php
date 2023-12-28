@@ -58,11 +58,19 @@
                               @elseif($movie->resolution==4) 
                                  FullHD
                               @endif   
-                           </span><span class="episode">Vietsub</span>
+                           </span><span class="episode">
+                              @if($movie->subtitle==0)
+                                 Vietsub
+                              @elseif($movie->subtitle==1) 
+                                 Lồng tiếng
+                              @elseif($movie->subtitle==2) 
+                                 Thuyết minh
+                              @endif
+                           </span>
                          </li>
                          <li class="list-info-group-item"><span>Điểm IMDb</span> : <span class="imdb">7.2</span>
                          </li>
-                         <li class="list-info-group-item"><span>Thời lượng</span> : 133 Phút</li>
+                         <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}}</li>
                          <li class="list-info-group-item"><span>Danh mục</span> : 
                            <a href="{{route('category', $movie->category->slug)}}">{{$movie->category->title}}</a>
                          </li>
@@ -91,6 +99,28 @@
                    </article>
                 </div>
              </div>
+             <div class="section-bar clearfix">
+               <h2 class="section-title"><span style="color:#ffed4d">Tags phim</span></h2>
+            </div>
+            <div class="entry-content htmlwrap clearfix">
+               <div class="video-item halim-entry-box">
+                  <article id="post-38424" class="item-content">
+                     @if($movie->tags!=NULL)
+                     @php
+                        $tags = array();
+                        $tags = explode(',', $movie->tags);
+                        // print_r($tags); 
+                     @endphp
+                     @foreach($tags as $key => $tag)
+                        <a href="{{url('tag/'.$tag)}}">{{$tag}}</a>
+                     @endforeach
+                     @else
+                        {{$movie->title}}
+                        
+                     @endif
+                  </article>
+               </div>
+            </div>
           </div>
        </section>
        <section class="related-movies">
@@ -116,7 +146,15 @@
                            @elseif($item->resolution==4) 
                             FullHD
                            @endif   
-                        </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                        </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                           @if($item->subtitle==0)
+                              Vietsub
+                           @elseif($item->subtitle==1) 
+                              Lồng tiếng
+                           @elseif($item->subtitle==2) 
+                              Thuyết minh
+                           @endif
+                        </span> 
                         <div class="icon_overlay"></div>
                         <div class="halim-post-title-box">
                            <div class="halim-post-title ">

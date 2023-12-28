@@ -29,7 +29,15 @@
                      @elseif($item->resolution==4) 
                         FullHD
                      @endif
-                  </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                  </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                     @if($item->subtitle==0)
+                        Vietsub
+                     @elseif($item->subtitle==1) 
+                        Lồng tiếng
+                     @elseif($item->subtitle==2) 
+                        Thuyết minh
+                     @endif
+                  </span> 
                   <div class="icon_overlay"></div>
                   <div class="halim-post-title-box">
                      <div class="halim-post-title ">
@@ -69,7 +77,15 @@
                         @elseif($mov->resolution==4) 
                             FullHD
                         @endif
-                      </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                      </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                        @if($mov->subtitle==0)
+                           Vietsub
+                        @elseif($mov->subtitle==1) 
+                           Lồng tiếng
+                        @elseif($mov->subtitle==2) 
+                           Thuyết minh
+                        @endif
+                      </span> 
                       <div class="icon_overlay"></div>
                       <div class="halim-post-title-box">
                          <div class="halim-post-title ">
