@@ -176,7 +176,8 @@
           </div>
        </section>
     </main>
-    <aside id="sidebar" class="col-xs-12 col-sm-12 col-md-4"></aside>
+    @include('pages.include.sidebarhot')
+
 </div>
 
 @endsection

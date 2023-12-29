@@ -41,7 +41,7 @@
       <style>#header .site-title {background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) no-repeat top left;background-size: contain;text-indent: -9999px;}</style>
    </head>
    <body class="home blog halimthemes halimmovies" data-masonry="">
-      <header id="header">
+      {{-- <header id="header">
          <div class="container">
             <div class="row" id="headwrap">
                <div class="col-md-3 col-sm-6 slogan">
@@ -71,7 +71,7 @@
                </div>
             </div>
          </div>
-      </header>
+      </header> --}}
       <div class="navbar-container">
          <div class="container">
             <nav class="navbar halim-navbar main-navigation" role="navigation" data-dropdown-hover="1">
@@ -166,6 +166,37 @@
       <script type='text/javascript' src='{{asset('js/bootstrap.min.js')}}' id='bootstrap-js'></script>
       <script type='text/javascript' src='{{asset('js/owl.carousel.min.js')}}' id='carousel-js'></script>
       <script type='text/javascript' src='{{asset('js/halimtheme-core.min.js')}}' id='halim-init-js'></script>
+
+      <script type="text/javascript">
+         $(document).ready(function() {
+            $.ajax({
+               url: "{{'/filter-topview-default'}}",
+               method: "GET",
+               // data: {value:value},
+               success: function(data) {
+                  $('#showday0').html(data);
+               }
+            })
+         
+         
+         $('.filter-sidebar').click(function() {
+            var href = $(this).attr('href');
+            if(href=='#day') {
+               var value = 0;
+            } else if(href=='#week') {
+               var value = 1;
+            }
+            $.ajax({
+               url: "{{'/filter-topview-movie'}}",
+               method: "GET",
+               data: {value:value},
+               success: function(data) {
+                  $('#show_day'+value).html(data);
+               }
+            })
+         })
+      })
+      </script>
       
       <style>#overlay_mb{position:fixed;display:none;width:100%;height:100%;top:0;left:0;right:0;bottom:0;background-color:rgba(0, 0, 0, 0.7);z-index:99999;cursor:pointer}#overlay_mb .overlay_mb_content{position:relative;height:100%}.overlay_mb_block{display:inline-block;position:relative}#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:600px;height:auto;position:relative;left:50%;top:50%;transform:translate(-50%, -50%);text-align:center}#overlay_mb .overlay_mb_content .cls_ov{color:#fff;text-align:center;cursor:pointer;position:absolute;top:5px;right:5px;z-index:999999;font-size:14px;padding:4px 10px;border:1px solid #aeaeae;background-color:rgba(0, 0, 0, 0.7)}#overlay_mb img{position:relative;z-index:999}@media only screen and (max-width: 768px){#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:400px;top:3%;transform:translate(-50%, 3%)}}@media only screen and (max-width: 400px){#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:310px;top:3%;transform:translate(-50%, 3%)}}</style>
     

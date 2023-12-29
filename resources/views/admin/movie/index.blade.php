@@ -25,6 +25,7 @@
                     <th scope="col">CreateDate</th>
                     <th scope="col">UpdateDate</th>
                     <th scope="col">Year</th>
+                    <th scope="col">TopViews</th>
                     <th scope="col">Manage</th>
                   </tr>
                 </thead>
@@ -81,6 +82,9 @@
                       <td>{{$cate->update_date}}</td>
                       <td>
                         {!! Form::selectYear('year', 2000, 2023, isset($cate->year) ? $cate->year : '', ['class'=>'select-year', 'id'=>$cate->id]) !!}
+                      </td>
+                      <td>
+                        {!! Form::select('topview', ['0'=>'Ngày','1'=>'Tuần','2'=>'Tháng'], isset($cate->topview) ? $cate->topview : '', ['class'=>'select-topview', 'id'=>$cate->id]) !!}
                       </td>
                       <td class="d-flex">
                         <a href="{{route('movie.edit', $cate->id)}}" class="btn btn-warning" style="margin-right: 0.5rem">Edit</a>

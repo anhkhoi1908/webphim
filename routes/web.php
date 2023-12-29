@@ -33,4 +33,7 @@ Route::resource('country', CountryController::class);
 Route::resource('movie', MovieController::class);
 Route::resource('episode', EpisodeController::class);
 Route::get('/update-year-movie', [MovieController::class, 'update_year']);
+Route::get('/update-topview-movie', [MovieController::class, 'update_topview']);
+Route::get('/filter-topview-movie', [MovieController::class, 'filter_topview']);
+Route::get('/filter-topview-default', [MovieController::class, 'filter_default']);
 
