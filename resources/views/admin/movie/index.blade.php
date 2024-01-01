@@ -13,6 +13,7 @@
                     <th scope="col">Tags</th>
                     <th scope="col">Image</th>
                     <th scope="col">Hot</th>
+                    <th scope="col">Coming</th>
                     <th scope="col">Resolution</th>
                     <th scope="col">Time</th>
                     <th scope="col">Subtitle</th>
@@ -22,10 +23,12 @@
                     <th scope="col">Category</th>
                     <th scope="col">Genre</th>
                     <th scope="col">Country</th>
+                    <th scope="col">Trailer</th>
                     <th scope="col">CreateDate</th>
                     <th scope="col">UpdateDate</th>
-                    <th scope="col">Year</th>
                     <th scope="col">TopViews</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Season</th>
                     <th scope="col">Manage</th>
                   </tr>
                 </thead>
@@ -44,6 +47,13 @@
                         @endif
                       </td>
                       <td>
+                        @if($cate->coming==0)
+                            Không
+                        @else 
+                            Có  
+                        @endif
+                      </td>
+                      <td>
                         @if($cate->resolution==0)
                             HD
                         @elseif($cate->resolution==1) 
@@ -54,6 +64,8 @@
                             Cam
                         @elseif($cate->resolution==4) 
                             FullHD
+                        @elseif($cate->resolution==5) 
+                            Coming soon
                         @endif
                       </td>
                       <td>{{$cate->time}}</td>
@@ -64,6 +76,8 @@
                             Lồng tiếng
                         @elseif($cate->subtitle==2) 
                             Thuyết minh
+                        @elseif($cate->subtitle==3) 
+                            Trailer
                         @endif
                       </td>
                       {{-- <td>{{$cate->description}}</td> --}}
@@ -78,13 +92,17 @@
                       <td>{{$cate->category->title}}</td>
                       <td>{{$cate->genre->title}}</td>
                       <td>{{$cate->country->title}}</td>
+                      <td>{{$cate->trailer}}</td>
                       <td>{{$cate->create_date}}</td>
                       <td>{{$cate->update_date}}</td>
+                      <td>
+                        {!! Form::select('topview', ['0'=>'Ngày','1'=>'Tuần','2'=>'Tháng'], isset($cate->topview) ? $cate->topview : '', ['class'=>'select-topview', 'id'=>$cate->id]) !!}
+                      </td>
                       <td>
                         {!! Form::selectYear('year', 2000, 2023, isset($cate->year) ? $cate->year : '', ['class'=>'select-year', 'id'=>$cate->id]) !!}
                       </td>
                       <td>
-                        {!! Form::select('topview', ['0'=>'Ngày','1'=>'Tuần','2'=>'Tháng'], isset($cate->topview) ? $cate->topview : '', ['class'=>'select-topview', 'id'=>$cate->id]) !!}
+                        {!! Form::selectRange('season', 0, 20, isset($cate->season) ? $cate->season : '', ['class'=>'select-season', 'id'=>$cate->id]) !!}
                       </td>
                       <td class="d-flex">
                         <a href="{{route('movie.edit', $cate->id)}}" class="btn btn-warning" style="margin-right: 0.5rem">Edit</a>

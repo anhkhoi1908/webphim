@@ -36,6 +36,8 @@
                             Cam
                         @elseif($mov->resolution==4) 
                             FullHD
+                        @elseif($mov->resolution==5) 
+                            Coming soon
                         @endif
                      </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                         @if($mov->subtitle==0)
@@ -44,6 +46,8 @@
                            Lồng tiếng
                         @elseif($mov->subtitle==2) 
                            Thuyết minh
+                        @elseif($mov->subtitle==3) 
+                           Trailer
                         @endif
                      </span> 
                      <div class="icon_overlay"></div>

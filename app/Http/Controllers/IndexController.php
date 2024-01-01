@@ -17,12 +17,13 @@ class IndexController extends Controller
 {
     public function home() {
         $hot = Movie::where('hot', 1)->where('status', 1)->orderBy('update_date', 'DESC')->get();
+        $coming = Movie::where('coming', 1)->where('status', 1)->orderBy('update_date', 'DESC')->get();
         $hot_sidebar = Movie::where('hot', 1)->where('status', 1)->orderBy('update_date', 'DESC')->take(20)->get();
         $category = Category::orderBy('id', 'ASC')->where('status', 1)->get();
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $category_home = Category::with('movie')->orderBy('id', 'ASC')->where('status', 1)->get();
-        return view('pages.home', compact('category', 'genre', 'country', 'category_home', 'hot', 'hot_sidebar'));
+        return view('pages.home', compact('category', 'genre', 'country', 'category_home', 'hot', 'hot_sidebar', 'coming'));
     }
     public function category(Request $request, $slug) {
         $category = Category::orderBy('id', 'ASC')->where('status', 1)->get();

@@ -141,8 +141,6 @@
         $('.select-year').change(function() {
             var year = $(this).find(':selected').val();
             var id_movie = $(this).attr('id');
-            // alert(year);
-            // alert(id_movie);
             $.ajax({
                 url:"{{url('/update-year-movie')}}",
                 method: "GET",
@@ -155,11 +153,24 @@
     </script>
 
     <script type="text/javascript">
+        $('.select-season').change(function() {
+            var season = $(this).find(':selected').val();
+            var id_movie = $(this).attr('id');
+            $.ajax({
+                url:"{{url('/update-season-movie')}}",
+                method: "GET",
+                data: {season:season, id_movie:id_movie},
+                success: function() {
+                    alert('Thay đổi phim theo season '+season+' thành công!');
+                }
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
         $('.select-topview').change(function() {
             var topview = $(this).find(':selected').val();
             var id_movie = $(this).attr('id');
-            // alert(year);
-            // alert(id_movie);
             if(topview==0) {
                 var text = 'Ngày';
             } else if(topview==1) {

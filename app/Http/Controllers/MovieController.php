@@ -11,12 +11,18 @@ use App\Models\Country;
 use PhpParser\Node\Expr\AssignOp\Mod;
 use PhpParser\Node\Stmt\Catch_;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
 
 class MovieController extends Controller
 {
     public function index()
     {
         $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
+        $path = public_path()."/json";
+        if(!is_dir($path)) {
+            mkdir($path,0777,true);
+        }
+        File::put($path.'movies.json',json_encode($list));
         return view('admin.movie.index', compact('list'));
     }
 
@@ -24,6 +30,13 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = Movie::find($data['id_movie']);
         $movie->year = $data['year'];
+        $movie->save();
+    }
+
+    public function update_season(Request $request) {
+        $data = $request->all();
+        $movie = Movie::find($data['id_movie']);
+        $movie->season = $data['season'];
         $movie->save();
     }
 
@@ -49,6 +62,8 @@ class MovieController extends Controller
                $text='Cam';
             } elseif($mov->resolution==4) {
                $text='FullHD';
+            } elseif($mov->resolution==5) {
+               $text='Trailer';
             };
             $output.= '<div class="item post-37176">
             <a href="'.url('movie/'.$mov->slug).'" title="'.$mov->title.'">
@@ -86,6 +101,8 @@ class MovieController extends Controller
                $text='Cam';
             } elseif($mov->resolution==4) {
                $text='FullHD';
+            } elseif($mov->resolution==5) {
+               $text='Trailer';
             };
             $output.= '<div class="item post-37176">
             <a href="'.url('movie/'.$mov->slug).'" title="'.$mov->title.'">
@@ -115,8 +132,9 @@ class MovieController extends Controller
         $category = Category::pluck('title', 'id');
         $country = Country::pluck('title', 'id');
         $genre = Genre::pluck('title', 'id');
+        $list_genre = Genre::all();
         $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
-        return view('admin.movie.form', compact('list', 'category', 'genre', 'country'));
+        return view('admin.movie.form', compact('list', 'category', 'genre', 'country', 'list_genre'));
     }
 
     public function store(Request $request)
@@ -127,17 +145,24 @@ class MovieController extends Controller
         $movie->resolution = $data['resolution'];
         $movie->subtitle = $data['subtitle'];
         $movie->time = $data['time'];
+        $movie->trailer = $data['trailer'];
         $movie->hot = $data['hot'];
+        $movie->coming = $data['coming'];
         $movie->tags = $data['tags'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->status = $data['status'];
         $movie->category_id = $data['category_id'];
         $movie->country_id = $data['country_id'];
-        $movie->genre_id = $data['genre_id'];
         $movie->create_date = Carbon::now('Asia/Ho_Chi_Minh');
         $movie->update_date = Carbon::now('Asia/Ho_Chi_Minh');
 
+        foreach($data['genre'] as $key => $gen) {
+            $movie->genre_id = $gen[0];
+        };
+        
+        // $movie->genre_id = $data['genre_id'];
+        
         $get_image = $request->file('image');
 
         if($get_image) {
@@ -161,9 +186,10 @@ class MovieController extends Controller
         $category = Category::pluck('title', 'id');
         $country = Country::pluck('title', 'id');
         $genre = Genre::pluck('title', 'id');
+        $list_genre = Genre::all();
         $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
         $movie = Movie::find($id);
-        return view('admin.movie.form', compact('list', 'category', 'genre', 'country', 'movie'));
+        return view('admin.movie.form', compact('list', 'category', 'genre', 'country', 'movie', 'list_genre'));
     }
 
     public function update(Request $request, $id)
@@ -173,6 +199,9 @@ class MovieController extends Controller
         $movie->title = $data['title'];
         $movie->resolution = $data['resolution'];
         $movie->subtitle = $data['subtitle'];
+        $movie->trailer = $data['trailer'];
+        $movie->hot = $data['hot'];
+        $movie->coming = $data['coming'];
         $movie->time = $data['time'];
         $movie->tags = $data['tags'];
         $movie->slug = $data['slug'];

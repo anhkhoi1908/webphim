@@ -24,12 +24,16 @@
                             {!! Form::text('title', isset($movie) ? $movie->title : '', ['class'=>'form-control','placeholders'=>'...', 'id'=>'slug', 'onkeyup'=>'ChangeToSlug()']) !!}
                         </div>
                         <div class="form-group">
+                            {!! Form::label('slug', 'Slug', []) !!}
+                            {!! Form::text('slug', isset($movie) ? $movie->slug : '', ['class'=>'form-control','placeholders'=>'...', 'id'=>'convert_slug']) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('time', 'Time', []) !!}
                             {!! Form::text('time', isset($movie) ? $movie->time : '', ['class'=>'form-control','placeholders'=>'...']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('slug', 'Slug', []) !!}
-                            {!! Form::text('slug', isset($movie) ? $movie->slug : '', ['class'=>'form-control','placeholders'=>'...', 'id'=>'convert_slug']) !!}
+                            {!! Form::label('trailer', 'Trailer', []) !!}
+                            {!! Form::text('trailer', isset($movie) ? $movie->trailer : '', ['class'=>'form-control','placeholders'=>'...']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('description', 'Description', []) !!}
@@ -45,19 +49,23 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('resolution', 'Resolution', []) !!}
-                            {!! Form::select('resolution', ['0'=>'HD','1'=>'SD','2'=>'HDCam','3'=>'Cam','4'=>'FullHD'], isset($movie) ? $movie->resolution: '', ['class'=>'form-control']) !!}
+                            {!! Form::select('resolution', ['0'=>'HD','1'=>'SD','2'=>'HDCam','3'=>'Cam','4'=>'FullHD','5'=>'Coming soon'], isset($movie) ? $movie->resolution: '', ['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('subtitle', 'Subtitle', []) !!}
-                            {!! Form::select('subtitle', ['0'=>'Vietsub','1'=>'Lồng tiếng','2'=>'Thuyết minh'], isset($movie) ? $movie->subtitle: '', ['class'=>'form-control']) !!}
+                            {!! Form::select('subtitle', ['0'=>'Vietsub','1'=>'Lồng tiếng','2'=>'Thuyết minh','3'=>'Trailer'], isset($movie) ? $movie->subtitle: '', ['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('Category', 'Category', []) !!}
                             {!! Form::select('category_id', $category, isset($movie) ? $movie->category_id: '', ['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('Genre', 'Genre', []) !!}
-                            {!! Form::select('genre_id', $genre, isset($movie) ? $movie->genre_id: '', ['class'=>'form-control']) !!}
+                            {!! Form::label('Genre', 'Genre', []) !!}<br>
+                            {{-- {!! Form::select('genre_id', $genre, isset($movie) ? $movie->genre_id: '', ['class'=>'form-control']) !!} --}}
+                            @foreach($list_genre as $key => $gen) 
+                                {!! Form::checkbox('genre[]', $gen->id, $movie->genre_id==$gen->id ? 'checked' : '') !!}
+                                {!! Form::label('genre', $gen->title) !!}
+                            @endforeach
                         </div>
                         <div class="form-group">
                             {!! Form::label('Country', 'Country', []) !!}
@@ -66,6 +74,10 @@
                         <div class="form-group">
                             {!! Form::label('Hot', 'Hot', []) !!}
                             {!! Form::select('hot', ['1'=>'Có','0'=>'Không'], isset($movie) ? $movie->hot: '', ['class'=>'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('Coming', 'Coming', []) !!}
+                            {!! Form::select('coming', ['1'=>'Có','0'=>'Không'], isset($movie) ? $movie->coming: '', ['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('Image', 'Image', []) !!}

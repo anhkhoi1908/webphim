@@ -8,11 +8,12 @@
       <meta content="VN" name="geo.region" />
       <meta name="DC.language" scheme="utf-8" content="vi" />
       <meta name="language" content="Việt Nam">
+      <meta name="csrf-token" content="{{ csrf_token() }}" />
 
       <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" />
       <meta name="revisit-after" content="1 days" />
       <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-      <title>Phim hay 2021 - Xem phim hay nhất</title>
+      <title>Ghiền Phim - 2024</title>
       <meta name="description" content="Phim hay 2021 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" />
       <link rel="canonical" href="">
       <link rel="next" href="" />
@@ -41,7 +42,7 @@
       <style>#header .site-title {background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) no-repeat top left;background-size: contain;text-indent: -9999px;}</style>
    </head>
    <body class="home blog halimthemes halimmovies" data-masonry="">
-      {{-- <header id="header">
+      <header id="header">
          <div class="container">
             <div class="row" id="headwrap">
                <div class="col-md-3 col-sm-6 slogan">
@@ -51,15 +52,14 @@
                <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
                   <div class="header-nav">
                      <div class="col-xs-12">
-                        <form id="search-form-pc" name="halimForm" role="search" action="" method="GET">
-                           <div class="form-group">
-                              <div class="input-group col-xs-12">
-                                 <input id="search" type="text" name="s" class="form-control" placeholder="Tìm kiếm..." autocomplete="off" required>
-                                 <i class="animate-spin hl-spin4 hidden"></i>
-                              </div>
+                        <div class="form-group">
+                           <div class="input-group col-xs-12">
+                              <input id="search" type="text" name="search" class="form-control" placeholder="Tìm kiếm..." autocomplete="off" required>
+                      
                            </div>
-                        </form>
-                        <ul class="ui-autocomplete ajax-results hidden"></ul>
+                        </div>
+            
+                        <ul class="ui-autocomplete ajax-results hidden list-group" id="result"></ul>
                      </div>
                   </div>
                </div>
@@ -71,7 +71,7 @@
                </div>
             </div>
          </div>
-      </header> --}}
+      </header>
       <div class="navbar-container">
          <div class="container">
             <nav class="navbar halim-navbar main-navigation" role="navigation" data-dropdown-hover="1">
@@ -126,9 +126,9 @@
                         </li>
                      </ul>
                   </div>
-                  <ul class="nav navbar-nav navbar-left" style="background:#000;">
+                  {{-- <ul class="nav navbar-nav navbar-left" style="background:#000;">
                      <li><a href="#" onclick="locphim()" style="color: #ffed4d;">Lọc Phim</a></li>
-                  </ul>
+                  </ul> --}}
                </div>
             </nav>
             <div class="collapse navbar-collapse" id="search-form">
@@ -172,12 +172,12 @@
             $.ajax({
                url: "{{'/filter-topview-default'}}",
                method: "GET",
+             
                // data: {value:value},
                success: function(data) {
-                  $('#showday0').html(data);
+                  $('#show_data_default').html(data);
                }
             })
-         
          
          $('.filter-sidebar').click(function() {
             var href = $(this).attr('href');
@@ -185,13 +185,19 @@
                var value = 0;
             } else if(href=='#week') {
                var value = 1;
+            } else {
+               var value = 2;
             }
             $.ajax({
                url: "{{'/filter-topview-movie'}}",
-               method: "GET",
+               method: "POST",
+               headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               },
                data: {value:value},
                success: function(data) {
-                  $('#show_day'+value).html(data);
+                  $('#halim-ajax-popular-post-default').css("display","none");
+                  $('#show_data').html(data);
                }
             })
          })
@@ -271,12 +277,49 @@
          #hide_float_left_m a {background: #0098D2;padding: 5px 15px 5px 15px;color: #FFF;font-weight: 700;}
          span.bannermobi2 img {height: 70px;width: 300px;}
          #hide_float_right a { background: #01AEF0; padding: 5px 5px 1px 5px; color: #FFF;float: left;}
-         </style>
+      </style>
 
-         <script>
-            $(document).ready(function($) {				
-            var owl = $('#halim_related_movies-2');
-            owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
-         </script>
+      <script>
+         $(document).ready(function($) {				
+         var owl = $('#halim_related_movies-2');
+         owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
+      </script>
+
+      <script>
+         $(document).ready(function($) {				
+         var owl = $('#halim_related_movies-3');
+         owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
+      </script>
+
+      <script>
+         $(".watch_trailer").click(function(e) {
+            e.preventDefault();
+            var aid = $(this).attr("href");
+            $('html,body').animate({scrollTop: $(aid).offset().top}, 'slow');
+         });
+      </script>
+
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0" nonce="Dm0idSKe"></script>
+
+      <script type="text/javascript">
+         $(document).ready(function() {
+            $('#search').keyup(function() {
+               $('#result').html('');
+               var search = $('#search').val();
+               if(search!='') {
+                  var expression = new RegExp(search, "i");
+                  $.getJSON('json/movies.json', function(data) {
+                     $.each(data, function(key, value) {
+                        if(value.title.search(expression) != -1) {
+                           $('#result').append('<li class="list-group-item" style="cursor:pointer">ppp</li>');
+                        }
+                     })
+                  })
+               }
+            })
+         })
+      </script>
+
    </body>
 </html>

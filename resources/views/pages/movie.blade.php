@@ -33,13 +33,18 @@
                 </div>
                 <div class="movie_info col-xs-12">
                    <div class="movie-poster col-md-3">
-                      <img class="movie-thumb" src="{{asset('uploads/movie/'.$movie->image)}}" alt="GÓA PHỤ ĐEN">
+                      <img class="movie-thumb" src="{{asset('uploads/movie/'.$movie->image)}}" alt="{{$movie->title}}">
+                      @if($movie->resolution!=5)
                       <div class="bwa-content">
                          <div class="loader"></div>
                          <a href="{{route('watch')}}" class="bwac-btn">
                          <i class="fa fa-play"></i>
                          </a>
                       </div>
+                      @else
+                        <a href="#watch_trailer" class="watch_trailer btn btn-primary">Xem Trailer</a>
+                      @endif
+
                    </div>
                    <div class="film-poster col-md-9">
                       <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;">{{$movie->title}}</h1>
@@ -48,16 +53,18 @@
                          <li class="list-info-group-item"><span>Trạng Thái</span> : 
                            <span class="quality">
                               @if($movie->resolution==0)
-                                 HD
-                              @elseif($movie->resolution==1) 
-                                 SD  
-                              @elseif($movie->resolution==2) 
-                                 HDCam
-                              @elseif($movie->resolution==3) 
-                                 Cam
-                              @elseif($movie->resolution==4) 
-                                 FullHD
-                              @endif   
+                            HD
+                        @elseif($movie->resolution==1) 
+                            SD  
+                        @elseif($movie->resolution==2) 
+                            HDCam
+                        @elseif($movie->resolution==3) 
+                            Cam
+                        @elseif($movie->resolution==4) 
+                            FullHD
+                        @elseif($movie->resolution==5) 
+                            Coming soon
+                        @endif
                            </span><span class="episode">
                               @if($movie->subtitle==0)
                                  Vietsub
@@ -65,6 +72,8 @@
                                  Lồng tiếng
                               @elseif($movie->subtitle==2) 
                                  Thuyết minh
+                              @elseif($movie->subtitle==3) 
+                                 Trailer
                               @endif
                            </span>
                          </li>
@@ -89,45 +98,79 @@
              <div class="clearfix"></div>
              <div id="halim_trailer"></div>
              <div class="clearfix"></div>
-             <div class="section-bar clearfix">
-                <h2 class="section-title"><span style="color:#ffed4d">Nội dung phim</span></h2>
-             </div>
-             <div class="entry-content htmlwrap clearfix">
-                <div class="video-item halim-entry-box">
-                   <article id="post-38424" class="item-content">
-                      {{$movie->description}}
-                   </article>
-                </div>
-             </div>
-             <div class="section-bar clearfix">
-               <h2 class="section-title"><span style="color:#ffed4d">Tags phim</span></h2>
+             <div class="section-heading">
+                <a href="danhmuc.php" title="Phim Bộ">
+                  <span class="h-text" style="border-radius: 4px">Nội Dung</span>
+               </a>
             </div>
             <div class="entry-content htmlwrap clearfix">
                <div class="video-item halim-entry-box">
-                  <article id="post-38424" class="item-content">
-                     @if($movie->tags!=NULL)
+                   <article id="post-38424" class="item-content">
+                      {{$movie->description}}
+                     </article>
+                  </div>
+               </div>
+               <div class="section-heading">
+                  <a href="danhmuc.php" title="Phim Bộ">
+                     <span class="h-text" style="border-radius: 4px">Trailer Phim</span>
+                  </a>
+               </div>
+               <div class="entry-content htmlwrap clearfix">
+                  <div class="video-item halim-entry-box">
+                     <article id="watch_trailer" class="item-content">
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{$movie->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                     </article>
+                  </div>
+               </div>
+               <div class="section-heading">
+                  <a href="danhmuc.php" title="Phim Bộ">
+                     <span class="h-text" style="border-radius: 4px">Tags Phim</span>
+                  </a>
+               </div>
+               <div class="entry-content htmlwrap clearfix">
+                  <div class="video-item halim-entry-box">
+                     <article id="post-38424" class="item-content">
+                        @if($movie->tags!=NULL)
+                        @php
+                           $tags = array();
+                           $tags = explode(',', $movie->tags);
+                           // print_r($tags); 
+                        @endphp
+                        @foreach($tags as $key => $tag)
+                           <a href="{{url('tag/'.$tag)}}">{{$tag}}</a>
+                        @endforeach
+                        @else
+                           {{$movie->title}}
+                           
+                        @endif
+                     </article>
+                  </div>
+               </div>
+
+               <div class="section-heading">
+                  <a href="danhmuc.php" title="Phim Bộ">
+                     <span class="h-text" style="border-radius: 4px">Bình Luận</span>
+                  </a>
+               </div>
+               <div class="entry-content htmlwrap clearfix">
+                  <div class="video-item halim-entry-box">
                      @php
-                        $tags = array();
-                        $tags = explode(',', $movie->tags);
-                        // print_r($tags); 
+                        $current_url = Request::url();
                      @endphp
-                     @foreach($tags as $key => $tag)
-                        <a href="{{url('tag/'.$tag)}}">{{$tag}}</a>
-                     @endforeach
-                     @else
-                        {{$movie->title}}
-                        
-                     @endif
-                  </article>
+                     <article id="post-38424" class="item-content">
+                        <div class="fb-comments" data-href="{{$current_url}}" data-width="100%" data-numposts="10"></div>
+                     </article>
+                  </div>
                </div>
             </div>
-          </div>
        </section>
        <section class="related-movies">
-          <div id="halim_related_movies-2xx" class="wrap-slider">
-             <div class="section-bar clearfix">
-                <h3 class="section-title"><span>CÓ THỂ BẠN MUỐN XEM</span></h3>
-             </div>
+          <div id="halim_related_movies-2xx" class="wrap-slider" style="padding: 0">
+            <div class="section-heading">
+               <a href="danhmuc.php" title="Phim Bộ">
+                  <span class="h-text" style="border-radius: 4px">Có Thể Bạn Muốn Xem</span>
+               </a>
+            </div>
              <div id="halim_related_movies-2" class="owl-carousel owl-theme related-film">
                @foreach($related as $key => $item)
                <article class="thumb grid-item post-38498">
@@ -137,15 +180,17 @@
                         <span class="status">
                            @if($item->resolution==0)
                             HD
-                           @elseif($item->resolution==1) 
+                        @elseif($item->resolution==1) 
                             SD  
-                           @elseif($item->resolution==2) 
+                        @elseif($item->resolution==2) 
                             HDCam
-                           @elseif($item->resolution==3) 
+                        @elseif($item->resolution==3) 
                             Cam
-                           @elseif($item->resolution==4) 
+                        @elseif($item->resolution==4) 
                             FullHD
-                           @endif   
+                        @elseif($item->resolution==5) 
+                            Coming soon
+                        @endif
                         </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                            @if($item->subtitle==0)
                               Vietsub
@@ -153,6 +198,8 @@
                               Lồng tiếng
                            @elseif($item->subtitle==2) 
                               Thuyết minh
+                           @elseif($item->subtitle==3) 
+                              Trailer
                            @endif
                         </span> 
                         <div class="icon_overlay"></div>

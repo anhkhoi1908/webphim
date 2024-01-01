@@ -16,9 +16,14 @@
     </div>
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
        <section>
-          <div class="section-bar clearfix">
+          {{-- <div class="section-bar clearfix">
              <h1 class="section-title"><span>{{$country_slug->title}}</span></h1>
-          </div>
+          </div> --}}
+          <div class="section-heading">
+            <a href="danhmuc.php" title="Phim Bộ">
+               <span class="h-text" style="border-radius: 4px">{{$country_slug->title}}</span>
+            </a>
+         </div>
           <div class="halim_box">
             @foreach($movie as $key => $mov)
             <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-37606">
@@ -36,6 +41,8 @@
                             Cam
                         @elseif($mov->resolution==4) 
                             FullHD
+                        @elseif($mov->resolution==5) 
+                            Coming soon
                         @endif
                      </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                         @if($mov->subtitle==0)
@@ -44,6 +51,8 @@
                            Lồng tiếng
                         @elseif($mov->subtitle==2) 
                            Thuyết minh
+                        @elseif($mov->subtitle==3) 
+                           Trailer
                         @endif
                      </span> 
                      <div class="icon_overlay"></div>
