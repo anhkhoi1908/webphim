@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="row container" id="wrapper">
-    <div class="halim-panel-filter">
+    {{-- <div class="halim-panel-filter">
        <div class="panel-heading">
           <div class="row">
              <div class="col-xs-6">
@@ -13,7 +13,7 @@
        <div id="ajax-filter" class="panel-collapse collapse" aria-expanded="true" role="menu">
           <div class="ajax"></div>
        </div>
-    </div>
+    </div> --}}
     <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
        <section>
           {{-- <div class="section-bar clearfix">
@@ -21,7 +21,7 @@
           </div> --}}
           <div class="section-heading">
             <a href="danhmuc.php" title="Phim Bộ">
-               <span class="h-text" style="border-radius: 4px">Phim {{$year}}</span>
+               <span class="h-text" style="">Phim {{$year}}</span>
             </a>
          </div>
           <div class="halim_box">

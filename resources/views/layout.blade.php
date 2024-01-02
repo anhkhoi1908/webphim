@@ -25,7 +25,7 @@
       <meta property="og:image" content="" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="55" />
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
      
       <link rel='dns-prefetch' href='//s.w.org' />
       
@@ -42,7 +42,7 @@
       <style>#header .site-title {background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) no-repeat top left;background-size: contain;text-indent: -9999px;}</style>
    </head>
    <body class="home blog halimthemes halimmovies" data-masonry="">
-      <header id="header">
+      {{-- <header id="header">
          <div class="container">
             <div class="row" id="headwrap">
                <div class="col-md-3 col-sm-6 slogan">
@@ -71,7 +71,7 @@
                </div>
             </div>
          </div>
-      </header>
+      </header> --}}
       <div class="navbar-container">
          <div class="container">
             <nav class="navbar halim-navbar main-navigation" role="navigation" data-dropdown-hover="1">
@@ -282,13 +282,13 @@
       <script>
          $(document).ready(function($) {				
          var owl = $('#halim_related_movies-2');
-         owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
+         owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
       </script>
 
       <script>
          $(document).ready(function($) {				
          var owl = $('#halim_related_movies-3');
-         owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
+         owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
       </script>
 
       <script>

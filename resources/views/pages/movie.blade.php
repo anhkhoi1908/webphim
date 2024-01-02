@@ -7,9 +7,9 @@
           <div class="row">
              <div class="col-xs-6">
                 <div class="yoast_breadcrumb hidden-xs"><span><span><a href="{{route('category', $movie->category->slug)}}">
-                  {{$movie->category->title}}</a> » <span><a href="{{route('country', $movie->country->slug)}}">
-                     {{$movie->country->title}}</a> » <span><a href="{{route('genre', $movie->genre->slug)}}">
-                        {{$movie->genre->title}}</a> » <span class="breadcrumb_last" aria-current="page">{{$movie->title}}
+                  {{$movie->category->title}}</a>  »  <span><a href="{{route('country', $movie->country->slug)}}">
+                     {{$movie->country->title}}</a>  »  <span><a href="{{route('genre', $movie->genre->slug)}}">
+                        {{$movie->genre->title}}</a>  »  <span class="breadcrumb_last" aria-current="page">{{$movie->title}}
                      </span></span></span></span></span>
                 </div>
              </div>
@@ -19,18 +19,18 @@
           <div class="ajax"></div>
        </div>
     </div>
-    <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
+    <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8" style="margin-top: 2rem; border-right: 1px solid #333">
        <section id="content" class="test">
           <div class="clearfix wrap-content">
              <div class="halim-movie-wrapper">
-                <div class="title-block">
+                {{-- <div class="title-block">
                    <div id="bookmark" class="bookmark-img-animation primary_ribbon" data-id="38424">
                       <div class="halim-pulse-ring"></div>
                    </div>
                    <div class="title-wrapper" style="font-weight: bold;">
                       Bookmark
                    </div>
-                </div>
+                </div> --}}
                 <div class="movie_info col-xs-12">
                    <div class="movie-poster col-md-3">
                       <img class="movie-thumb" src="{{asset('uploads/movie/'.$movie->image)}}" alt="{{$movie->title}}">
@@ -42,13 +42,15 @@
                          </a>
                       </div>
                       @else
-                        <a href="#watch_trailer" class="watch_trailer btn btn-primary">Xem Trailer</a>
+                        <a href="#watch_trailer" class="watch_trailer btn" style="position: absolute; left: 0; top: 0; background: red; color: #fff;  border-radius: 0 !important">
+                           Xem Trailer
+                        </a>
                       @endif
 
                    </div>
                    <div class="film-poster col-md-9">
-                      <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;">{{$movie->title}}</h1>
-                      <h2 class="movie-title title-2" style="font-size: 12px;">Black Widow (2021)</h2>
+                      <h1 class="movie-title title-1" style="display:block;line-height:35px;color: #fff;text-transform: uppercase;font-size: 24px; font-weight: bold">{{$movie->title}}</h1>
+                      {{-- <h2 class="movie-title title-2" style="font-size: 12px;">Black Widow (2021)</h2> --}}
                       <ul class="list-info-group">
                          <li class="list-info-group-item"><span>Trạng Thái</span> : 
                            <span class="quality">
@@ -100,7 +102,7 @@
              <div class="clearfix"></div>
              <div class="section-heading">
                 <a href="danhmuc.php" title="Phim Bộ">
-                  <span class="h-text" style="border-radius: 4px">Nội Dung</span>
+                  <span class="h-text" style="">Nội Dung</span>
                </a>
             </div>
             <div class="entry-content htmlwrap clearfix">
@@ -110,21 +112,21 @@
                      </article>
                   </div>
                </div>
-               <div class="section-heading">
+               {{-- <div class="section-heading">
                   <a href="danhmuc.php" title="Phim Bộ">
-                     <span class="h-text" style="border-radius: 4px">Trailer Phim</span>
+                     <span class="h-text" style="">Trailer Phim</span>
                   </a>
-               </div>
+               </div> --}}
                <div class="entry-content htmlwrap clearfix">
                   <div class="video-item halim-entry-box">
                      <article id="watch_trailer" class="item-content">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{$movie->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="100%" height="415" src="https://www.youtube.com/embed/{{$movie->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                      </article>
                   </div>
                </div>
-               <div class="section-heading">
+               {{-- <div class="section-heading">
                   <a href="danhmuc.php" title="Phim Bộ">
-                     <span class="h-text" style="border-radius: 4px">Tags Phim</span>
+                     <span class="h-text" style="">Tags Phim</span>
                   </a>
                </div>
                <div class="entry-content htmlwrap clearfix">
@@ -145,14 +147,14 @@
                         @endif
                      </article>
                   </div>
-               </div>
+               </div> --}}
 
-               <div class="section-heading">
+               {{-- <div class="section-heading">
                   <a href="danhmuc.php" title="Phim Bộ">
-                     <span class="h-text" style="border-radius: 4px">Bình Luận</span>
+                     <span class="h-text" style="">Bình Luận</span>
                   </a>
-               </div>
-               <div class="entry-content htmlwrap clearfix">
+               </div> --}}
+               <div class="entry-content htmlwrap clearfix" style="background: #fff">
                   <div class="video-item halim-entry-box">
                      @php
                         $current_url = Request::url();
@@ -168,7 +170,7 @@
           <div id="halim_related_movies-2xx" class="wrap-slider" style="padding: 0">
             <div class="section-heading">
                <a href="danhmuc.php" title="Phim Bộ">
-                  <span class="h-text" style="border-radius: 4px">Có Thể Bạn Muốn Xem</span>
+                  <span class="h-text" style="">Có Thể Bạn Muốn Xem</span>
                </a>
             </div>
              <div id="halim_related_movies-2" class="owl-carousel owl-theme related-film">

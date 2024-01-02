@@ -5,10 +5,10 @@
       </div> --}}
       <div class="section-heading text-center">
         <a href="danhmuc.php" title="Phim Bộ">
-          <span class="h-text" style="border-radius: 4px;">Top View</span>
+          <span class="h-text" style="">Top View</span>
         </a>
      </div>
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="display: flex; justify-content: center; margin-bottom: 2rem;">
         <li class="nav-item active">
           <a class="nav-link filter-sidebar" id="pills-home-tab" data-toggle="pill" href="#day" role="tab" aria-controls="pills-home" aria-selected="true">Ngày</a>
         </li>
