@@ -23,6 +23,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Genre</th>
                     <th scope="col">Country</th>
+                    <th scope="col">Actor</th>
                     <th scope="col">Trailer</th>
                     <th scope="col">CreateDate</th>
                     <th scope="col">UpdateDate</th>
@@ -92,6 +93,7 @@
                       <td>{{$cate->category->title}}</td>
                       <td>{{$cate->genre->title}}</td>
                       <td>{{$cate->country->title}}</td>
+                      <td>{{$cate->actor}}</td>
                       <td>{{$cate->trailer}}</td>
                       <td>{{$cate->create_date}}</td>
                       <td>{{$cate->update_date}}</td>

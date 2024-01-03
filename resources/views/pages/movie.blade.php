@@ -91,6 +91,7 @@
                          <li class="list-info-group-item"><span>Quốc gia</span> : 
                            <a href="{{route('country', $movie->country->slug)}}" rel="tag">{{$movie->country->title}}</a>
                          </li>
+                         <li class="list-info-group-item"><span>Diễn viên</span> : {{$movie->actor}}</li>
                          
                       </ul>
                       <div class="movie-trailer hidden"></div>
@@ -100,7 +101,7 @@
              <div class="clearfix"></div>
              <div id="halim_trailer"></div>
              <div class="clearfix"></div>
-             <div class="section-heading">
+             <div class="section-heading" style="margin-bottom:0.5rem">
                 <a href="danhmuc.php" title="Phim Bộ">
                   <span class="h-text" style="">Nội Dung</span>
                </a>
@@ -220,7 +221,7 @@
              <script>
                 $(document).ready(function($) {				
                 var owl = $('#halim_related_movies-2');
-                owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 4}}})});
+                owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 4}}})});
              </script>
           </div>
        </section>

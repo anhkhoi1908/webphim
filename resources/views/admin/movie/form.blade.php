@@ -61,11 +61,11 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('Genre', 'Genre', []) !!}<br>
-                            {{-- {!! Form::select('genre_id', $genre, isset($movie) ? $movie->genre_id: '', ['class'=>'form-control']) !!} --}}
-                            @foreach($list_genre as $key => $gen) 
+                            {!! Form::select('genre_id', $genre, isset($movie) ? $movie->genre_id: '', ['class'=>'form-control']) !!}
+                            {{-- @foreach($list_genre as $key => $gen) 
                                 {!! Form::checkbox('genre[]', $gen->id, $movie->genre_id==$gen->id ? 'checked' : '') !!}
                                 {!! Form::label('genre', $gen->title) !!}
-                            @endforeach
+                            @endforeach --}}
                         </div>
                         <div class="form-group">
                             {!! Form::label('Country', 'Country', []) !!}
@@ -78,6 +78,10 @@
                         <div class="form-group">
                             {!! Form::label('Coming', 'Coming', []) !!}
                             {!! Form::select('coming', ['1'=>'Có','0'=>'Không'], isset($movie) ? $movie->coming: '', ['class'=>'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('Actor', 'Actor', []) !!}
+                            {!! Form::text('actor', isset($movie) ? $movie->actor : '', ['class'=>'form-control','placeholders'=>'...']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('Image', 'Image', []) !!}

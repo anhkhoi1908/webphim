@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="row container" id="wrapper">
-    {{-- <div class="halim-panel-filter">
+    <div class="halim-panel-filter">
        <div class="panel-heading">
           <div class="row">
              <div class="col-xs-6">
@@ -13,8 +13,8 @@
        <div id="ajax-filter" class="panel-collapse collapse" aria-expanded="true" role="menu">
           <div class="ajax"></div>
        </div>
-    </div> --}}
-    <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
+    </div>
+    <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8" style="border-right:1px solid #333">
        <section>
           {{-- <div class="section-bar clearfix">
              <h1 class="section-title"><span>Năm : {{$year}}</span></h1>

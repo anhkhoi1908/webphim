@@ -63,24 +63,37 @@ class MovieController extends Controller
             } elseif($mov->resolution==4) {
                $text='FullHD';
             } elseif($mov->resolution==5) {
-               $text='Trailer';
+               $text='Coming soon';
             };
-            $output.= '<div class="item post-37176">
+
+            if($mov->subtitle==0) {
+                $text_sub='Vietsub';
+            } elseif($mov->subtitle==1) {
+                $text_sub='Lồng tiếng';
+            } elseif($mov->subtitle==2) {
+                $text_sub='Thuyết minh';
+            } elseif($mov->subtitle==3) {
+                $text_sub='Trailer';
+            };
+            $output.= '<div class="item post-37176" style="margin-bottom:1rem">
             <a href="'.url('movie/'.$mov->slug).'" title="'.$mov->title.'">
                <div class="mov-link">
-                  <img src="'.url('uploads/movie/'.$mov->image).'" class="lazy post-thumb" alt="'.$mov->title.'" title="'.$mov->title.'" />
-                  <span class="is_trailer">
+                  <img src="'.url('uploads/movie/'.$mov->image).'" class="lazy post-thumb" alt="'.$mov->title.'" title="'.$mov->title.'" style="height:100%;margin-right:1rem;" />
+                  <div class="is_trailer" style="padding-top:1rem;background:#427b13;display:inline-block;color:#fff;font-size:11px;padding:3px 6px">
                      '.$text.'
-                  </span>
+                  </div>
+                  <div class="is_trailer" style="padding-top:1rem;background:red;display:inline-block;color:#fff;font-size:11px;padding:3px 6px">
+                     '.$text_sub.'
+                  </div>
                </div>
                <p class="title">'.$mov->title.'</p>
+               <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
+               <div style="float: left;">
+                  <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
+                  <span style="width: 0%"></span>
+                  </span>
+               </div>
             </a>
-            <div class="viewsCount" style="color: #9d9d9d;">3.2K lượt xem</div>
-            <div style="float: left;">
-               <span class="user-rate-image post-large-rate stars-large-vang" style="display: block;/* width: 100%; */">
-               <span style="width: 0%"></span>
-               </span>
-            </div>
             </div>';
         };
         echo $output;
@@ -154,6 +167,7 @@ class MovieController extends Controller
         $movie->status = $data['status'];
         $movie->category_id = $data['category_id'];
         $movie->country_id = $data['country_id'];
+        $movie->actor = $data['actor'];
         $movie->create_date = Carbon::now('Asia/Ho_Chi_Minh');
         $movie->update_date = Carbon::now('Asia/Ho_Chi_Minh');
 
@@ -210,6 +224,7 @@ class MovieController extends Controller
         $movie->category_id = $data['category_id'];
         $movie->country_id = $data['country_id'];
         $movie->genre_id = $data['genre_id'];
+        $movie->actor = $data['actor'];
         $movie->update_date = Carbon::now('Asia/Ho_Chi_Minh');
 
         $get_image = $request->file('image');

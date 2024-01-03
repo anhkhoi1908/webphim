@@ -94,7 +94,7 @@
                   </button>
                </div>
                <div class="collapse navbar-collapse" id="halim">
-                  <div class="menu-menu_1-container">
+                  <div class="menu-menu_1-container" style="display:flex;justify-content:space-between;align-items:center">
                      <ul id="menu-menu_1" class="nav navbar-nav navbar-left">
                         <li class="current-menu-item active"><a title="Trang Chủ" href="{{route('homepage')}}">Trang Chủ</a></li>
                         @foreach ($category as $key => $cate)
@@ -125,6 +125,11 @@
                            </ul>
                         </li>
                      </ul>
+                     <div style="width:30%;position:relative;">
+                        <input type="text" style="background:#222;outline:none;border:none;padding:1rem 1.5rem;width:100%;border-radius:4px" 
+                        placeholder="Tìm kiếm...">
+                        <i class="fa-solid fa-magnifying-glass" style="position:absolute;right:1.5rem;top:1.4rem"></i>
+                     </div>
                   </div>
                   {{-- <ul class="nav navbar-nav navbar-left" style="background:#000;">
                      <li><a href="#" onclick="locphim()" style="color: #ffed4d;">Lọc Phim</a></li>

@@ -51,8 +51,8 @@
                   <div class="icon_overlay"></div>
                   <div class="halim-post-title-box">
                      <div class="halim-post-title ">
-                        <p class="entry-title">{{$item->title}}</p>
-                        <p class="original_title">Monkey King: The One And Only</p>
+                        <p class="entry-title" style="">{{$item->title}}</p>
+                        <p class="original_title" style="color:#aaa">Monkey King: The One And Only</p>
                      </div>
                   </div>
                </a>
@@ -101,7 +101,7 @@
                   <div class="halim-post-title-box">
                      <div class="halim-post-title ">
                         <p class="entry-title">{{$item_coming->title}}</p>
-                        <p class="original_title">Monkey King: The One And Only</p>
+                        <p class="original_title" style="color:#aaa">Monkey King: The One And Only</p>
                      </div>
                   </div>
                </a>
@@ -110,9 +110,6 @@
          @endforeach
       </div>
 
-
-
-      
    </div>
    
    <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8" style="border-right: 1px solid #333">
@@ -168,7 +165,7 @@
                      <div class="halim-post-title-box">
                         <div class="halim-post-title ">
                            <p class="entry-title">{{($mov->title)}}</p>
-                           <p class="original_title">My Roommate Is a Gumiho</p>
+                           <p class="original_title" style="color:#aaa">My Roommate Is a Gumiho</p>
                         </div>
                      </div>
                   </a>
