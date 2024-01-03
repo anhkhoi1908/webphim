@@ -10,7 +10,7 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Tags</th>
+                    <th scope="col">Tags</th> 
                     <th scope="col">Image</th>
                     <th scope="col">Hot</th>
                     <th scope="col">Coming</th>
@@ -55,46 +55,56 @@
                         @endif
                       </td>
                       <td>
-                        @if($cate->resolution==0)
-                            HD
-                        @elseif($cate->resolution==1) 
-                            SD  
-                        @elseif($cate->resolution==2) 
-                            HDCam
-                        @elseif($cate->resolution==3) 
-                            Cam
-                        @elseif($cate->resolution==4) 
-                            FullHD
-                        @elseif($cate->resolution==5) 
-                            Coming soon
-                        @endif
+                        <span class="badge bg-success">
+                          @if($cate->resolution==0)
+                              HD
+                          @elseif($cate->resolution==1) 
+                              SD  
+                          @elseif($cate->resolution==2) 
+                              HDCam
+                          @elseif($cate->resolution==3) 
+                              Cam
+                          @elseif($cate->resolution==4) 
+                              FullHD
+                          @elseif($cate->resolution==5) 
+                              Coming soon
+                          @endif
+                          </span>
                       </td>
                       <td>{{$cate->time}}</td>
                       <td>
-                        @if($cate->subtitle==0)
-                            Vietsub
-                        @elseif($cate->subtitle==1) 
-                            Lồng tiếng
-                        @elseif($cate->subtitle==2) 
-                            Thuyết minh
-                        @elseif($cate->subtitle==3) 
-                            Trailer
-                        @endif
+                        <span class="badge" style="background:red">
+                          @if($cate->subtitle==0)
+                              Vietsub
+                          @elseif($cate->subtitle==1) 
+                              Lồng tiếng
+                          @elseif($cate->subtitle==2) 
+                              Thuyết minh
+                          @elseif($cate->subtitle==3) 
+                              Trailer
+                          @endif
+                        </span>
                       </td>
                       {{-- <td>{{$cate->description}}</td> --}}
                       <td>{{$cate->slug}}</td>
                       <td>
-                        @if ($cate->status)
+                        <span class="badge bg-info">
+                          @if ($cate->status)
                             Active
-                        @else 
+                          @else 
                             None  
-                        @endif
+                          @endif
+                        </span>
                       </td>
                       <td>{{$cate->category->title}}</td>
-                      <td>{{$cate->genre->title}}</td>
+                      <td>
+                        @foreach($cate->movie_genre as $gen)
+                          <span class="badge bg-dark rounded-pill">{{$gen->title}}</span>
+                        @endforeach
+                      </td>
                       <td>{{$cate->country->title}}</td>
                       <td>{{$cate->actor}}</td>
-                      <td>{{$cate->trailer}}</td>
+                      <td><span class="badge" style="background:purple">{{$cate->trailer}}</span></td>
                       <td>{{$cate->create_date}}</td>
                       <td>{{$cate->update_date}}</td>
                       <td>

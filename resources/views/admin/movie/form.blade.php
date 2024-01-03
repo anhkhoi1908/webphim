@@ -61,11 +61,15 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('Genre', 'Genre', []) !!}<br>
-                            {!! Form::select('genre_id', $genre, isset($movie) ? $movie->genre_id: '', ['class'=>'form-control']) !!}
-                            {{-- @foreach($list_genre as $key => $gen) 
-                                {!! Form::checkbox('genre[]', $gen->id, $movie->genre_id==$gen->id ? 'checked' : '') !!}
+                            @foreach($list_genre as $key => $gen) 
+                                @if(isset($movie))
+                                    {!! Form::checkbox('genre[]', $gen->id, isset($movie_genre) && $movie_genre->contains($gen->id) ? true : false) !!}
+                                @else
+                                    {!! Form::checkbox('genre[]', $gen->id, '') !!}
+                                     
+                                @endif
                                 {!! Form::label('genre', $gen->title) !!}
-                            @endforeach --}}
+                            @endforeach
                         </div>
                         <div class="form-group">
                             {!! Form::label('Country', 'Country', []) !!}

@@ -86,7 +86,9 @@
                            <a href="{{route('category', $movie->category->slug)}}">{{$movie->category->title}}</a>
                          </li>
                          <li class="list-info-group-item"><span>Thể loại</span> : 
-                           <a href="{{route('genre', $movie->genre->slug)}}">{{$movie->genre->title}}</a>
+                           @foreach($movie->movie_genre as $gen)
+                              <a href="{{route('genre', $gen->slug)}}">{{$gen->title}}, </a>
+                           @endforeach
                          </li>
                          <li class="list-info-group-item"><span>Quốc gia</span> : 
                            <a href="{{route('country', $movie->country->slug)}}" rel="tag">{{$movie->country->title}}</a>
