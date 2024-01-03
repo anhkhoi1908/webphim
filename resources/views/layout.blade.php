@@ -126,9 +126,16 @@
                         </li>
                      </ul>
                      <div style="width:30%;position:relative;">
-                        <input type="text" style="background:#222;outline:none;border:none;padding:1rem 1.5rem;width:100%;border-radius:4px" 
-                        placeholder="Tìm kiếm...">
-                        <i class="fa-solid fa-magnifying-glass" style="position:absolute;right:1.5rem;top:1.4rem"></i>
+                        <form action="{{route('search')}}" method="GET" style="display:flex">
+                           <input type="text" style="background:#222;outline:none;border:none;padding:0.5rem 1.5rem;width:100%;border-radius:4px" 
+                           placeholder="Tìm kiếm..." id="search" name="search">
+                           <button class="btn" style="background:red;margin-left:0.5rem;outline:none">
+                              <i class="fa-solid fa-magnifying-glass"></i>
+                           </button>
+                        </form>
+                        <ul class="ui-autocomplete ajax-results list-group" id="result" 
+                           style="position:absolute;width:100%;left:0;margin-top:1rem;display:none">
+                        </ul>
                      </div>
                   </div>
                   {{-- <ul class="nav navbar-nav navbar-left" style="background:#000;">
@@ -313,17 +320,29 @@
                $('#result').html('');
                var search = $('#search').val();
                if(search!='') {
+                  $('#result').css('display','inherit')
                   var expression = new RegExp(search, "i");
-                  $.getJSON('json/movies.json', function(data) {
+                  $.getJSON('/json/movies.json', function(data) {
                      $.each(data, function(key, value) {
                         if(value.title.search(expression) != -1) {
-                           $('#result').append('<li class="list-group-item" style="cursor:pointer">ppp</li>');
+                           $('#result').append('<li class="list-group-item" style="cursor:pointer"><img width="40" height="40" src="/uploads/movie/'+value.image+'" style="margin-right:1rem">'+value.title+'</li>');
                         }
                      })
                   })
+               } else {
+                  $('#result').css('display','none')
                }
             })
          })
+      </script>
+
+      <script type="text/javascript">
+         $('#result').on('click', 'li', function() {
+            var click_text = $(this).text();
+            $('#search').val($.trim(click_text[0]));
+            $("#result").html('');
+            $('#result').css('display','none')
+         });
       </script>
 
    </body>

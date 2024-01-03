@@ -13,12 +13,13 @@ use PhpParser\Node\Stmt\Catch_;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 
+
 class MovieController extends Controller
 {
     public function index()
     {
         $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
-        $path = public_path()."/json";
+        $path = public_path()."/json/";
         if(!is_dir($path)) {
             mkdir($path,0777,true);
         }

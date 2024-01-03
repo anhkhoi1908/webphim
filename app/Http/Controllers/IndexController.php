@@ -91,4 +91,19 @@ class IndexController extends Controller
         $country = Country::orderBy('id', 'DESC')->get();
         return view('pages.episode', compact('category', 'genre', 'country'));
     }
+    public function search() {
+        if(isset($_GET['search'])) {
+            $search = $_GET['search'];
+            $category = Category::orderBy('id', 'ASC')->where('status', 1)->get();
+            $genre = Genre::orderBy('id', 'DESC')->get();
+            $country = Country::orderBy('id', 'DESC')->get();
+            $movie = Movie::where('title', 'LIKE', '%'.$search.'%')->orderBy('update_date', 'DESC')->paginate(1);
+            $hot_sidebar = Movie::where('hot', 1)->where('status', 1)->orderBy('update_date', 'DESC')->take(20)->get();
+
+            return view('pages.search', compact('category', 'genre', 'country', 'search', 'movie', 'hot_sidebar'));
+
+        } else {
+            return redirect()->to('/');
+        }
+    }
 }

@@ -21,6 +21,7 @@ Route::get('/xemphim', [IndexController::class, 'watch'])->name('watch');
 Route::get('/episode', [IndexController::class, 'episode'])->name('episode');
 Route::get('/nam/{year}', [IndexController::class, 'year']);
 Route::get('/tag/{tag}', [IndexController::class, 'tag']);
+Route::get('/search', [IndexController::class, 'search'])->name('search');
 
 
 Auth::routes();
