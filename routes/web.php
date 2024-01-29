@@ -23,10 +23,10 @@ Route::get('/nam/{year}', [IndexController::class, 'year']);
 Route::get('/tag/{tag}', [IndexController::class, 'tag']);
 Route::get('/search', [IndexController::class, 'search'])->name('search');
 
-
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('select-movie', [EpisodeController::class, 'select_movie'])->name('select-movie');
 
 Route::resource('category', CategoryController::class);
 Route::resource('genre', GenreController::class);

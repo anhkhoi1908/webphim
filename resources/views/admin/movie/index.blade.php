@@ -4,8 +4,8 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('movie.create')}}" class="btn btn-primary my-5">Add new</a>
-            <table id="tablemovie" class="table pt-5 mb-5">
+            <a href="{{route('movie.create')}}" class="btn btn-primary my-4">Add new</a>
+            <table id="tablemovie" class="table pt-4 mb-5">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -23,6 +23,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Genre</th>
                     <th scope="col">Country</th>
+                    <th scope="col">Episode</th>
                     <th scope="col">Actor</th>
                     <th scope="col">Trailer</th>
                     <th scope="col">CreateDate</th>
@@ -103,6 +104,7 @@
                         @endforeach
                       </td>
                       <td>{{$cate->country->title}}</td>
+                      <td>{{$cate->eps}}</td>
                       <td>{{$cate->actor}}</td>
                       <td><span class="badge" style="background:purple">{{$cate->trailer}}</span></td>
                       <td>{{$cate->create_date}}</td>

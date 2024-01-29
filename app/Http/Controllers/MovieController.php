@@ -8,6 +8,7 @@ use App\Models\Movie;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Country;
+use App\Models\Movie_Genre;
 use PhpParser\Node\Expr\AssignOp\Mod;
 use PhpParser\Node\Stmt\Catch_;
 use Illuminate\Support\Carbon;
@@ -167,6 +168,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = new Movie();
         $movie->title = $data['title'];
+        $movie->eps = $data['eps'];
         $movie->resolution = $data['resolution'];
         $movie->subtitle = $data['subtitle'];
         $movie->time = $data['time'];
@@ -226,6 +228,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = Movie::find($id);
         $movie->title = $data['title'];
+        $movie->eps = $data['eps'];
         $movie->resolution = $data['resolution'];
         $movie->subtitle = $data['subtitle'];
         $movie->trailer = $data['trailer'];
@@ -270,9 +273,14 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::find($id);
+        // Xoa anh
         if(file_exists('uploads/movie/'.$movie->image)) {
             unlink('uploads/movie/' .$movie->image);
         }
+
+        // Xoa the loai
+        $movie = Movie_Genre::whereIn('movie_id', [$movie->id])->delete();
+
         $movie->delete();
         return redirect()->back();
     }

@@ -24,6 +24,10 @@
                             {!! Form::text('title', isset($movie) ? $movie->title : '', ['class'=>'form-control','placeholders'=>'...', 'id'=>'slug', 'onkeyup'=>'ChangeToSlug()']) !!}
                         </div>
                         <div class="form-group">
+                            {!! Form::label('eps', 'Episode', []) !!}
+                            {!! Form::text('eps', isset($movie) ? $movie->eps : '', ['class'=>'form-control','placeholders'=>'...']) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('slug', 'Slug', []) !!}
                             {!! Form::text('slug', isset($movie) ? $movie->slug : '', ['class'=>'form-control','placeholders'=>'...', 'id'=>'convert_slug']) !!}
                         </div>

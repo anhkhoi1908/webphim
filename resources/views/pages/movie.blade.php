@@ -5,11 +5,14 @@
     <div class="halim-panel-filter">
        <div class="panel-heading">
           <div class="row">
-             <div class="col-xs-6">
+             <div class="col-xs-10">
                 <div class="yoast_breadcrumb hidden-xs"><span><span><a href="{{route('category', $movie->category->slug)}}">
                   {{$movie->category->title}}</a>  »  <span><a href="{{route('country', $movie->country->slug)}}">
-                     {{$movie->country->title}}</a>  »  <span><a href="{{route('genre', $movie->genre->slug)}}">
-                        {{$movie->genre->title}}</a>  »  <span class="breadcrumb_last" aria-current="page">{{$movie->title}}
+                     {{$movie->country->title}}</a>  »  
+                     @foreach($movie->movie_genre as $gen)
+                       <a href="{{route('genre', $gen->slug)}}">{{$gen->title}}</a> »
+                     @endforeach  
+                     <span class="breadcrumb_last" aria-current="page">{{$movie->title}}
                      </span></span></span></span></span>
                 </div>
              </div>
@@ -82,6 +85,7 @@
                          <li class="list-info-group-item"><span>Điểm IMDb</span> : <span class="imdb">7.2</span>
                          </li>
                          <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}}</li>
+                         <li class="list-info-group-item"><span>Tập phim</span> : {{$movie->eps}}/{{$movie->eps}} - Hoàn thành</li>
                          <li class="list-info-group-item"><span>Danh mục</span> : 
                            <a href="{{route('category', $movie->category->slug)}}">{{$movie->category->title}}</a>
                          </li>

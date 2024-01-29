@@ -4,8 +4,8 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('country.create')}}" class="btn btn-primary my-5">Add new</a>
-            <table id="tablecountry" class="table pt-5 mb-5">
+            <a href="{{route('country.create')}}" class="btn btn-primary my-4">Add new</a>
+            <table id="tablecountry" class="table pt-4 mb-5">
                 <thead>
                   <tr>
                     <th scope="col">#</th>

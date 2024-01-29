@@ -18,7 +18,7 @@
         <aside id="sidebar" style="background-color: #222">
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">CodzSword</a>
+                    <a href="#">Dozing Bird</a>
                 </div>
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
@@ -205,7 +205,7 @@
         
         #sidebar {
             max-width: 264px;
-            min-width: 264px;
+            min-width: 200px;
             transition: all 0.35s ease-in-out;
             box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
             z-index: 1111;
@@ -214,7 +214,7 @@
         /* Sidebar collapse */
         
         #sidebar.collapsed {
-            margin-left: -264px;
+            margin-left: -200px;
         }
         
         .main {
